@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" aria-hidden="true">
+  <!-- Градиентная сфера из брендбука: синий диск и полупрозрачные белые круги со смещённым центром. -->
+  <circle cx="500" cy="500" r="500" fill="#465ED5"/>
+  <g fill="#FFFFFF" fill-opacity="0.08">
+    <circle cx="500" cy="500" r="500"/>
+    <circle cx="486" cy="482" r="426"/>
+    <circle cx="472" cy="464" r="352"/>
+    <circle cx="458" cy="446" r="282"/>
+    <circle cx="444" cy="428" r="214"/>
+    <circle cx="430" cy="410" r="150"/>
+    <circle cx="418" cy="394" r="92"/>
+  </g>
+</svg>

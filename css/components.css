@@ -1,0 +1,431 @@
+/* Переиспользуемые компоненты: тикер, счётчики, карточки, карта. */
+
+/* ——— Бегущая строка ——— */
+
+.ticker {
+  overflow: hidden;
+  padding-block: 18px;
+  border-block: 1px solid var(--line);
+  background: var(--ytf-white);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.ticker__track {
+  display: flex;
+  width: max-content;
+  animation: ticker-scroll 52s linear infinite;
+}
+.ticker:hover .ticker__track { animation-play-state: paused; }
+.ticker__item {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding-inline: 28px;
+  white-space: nowrap;
+  color: var(--text-muted);
+}
+.ticker__item::after {
+  content: '';
+  width: 5px;
+  height: 5px;
+  margin-left: 28px;
+  align-self: center;
+  border-radius: 50%;
+  background: var(--line-strong);
+}
+.ticker__value {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: var(--tracking-heading);
+  color: var(--ytf-blue);
+}
+
+@keyframes ticker-scroll {
+  to { transform: translateX(-50%); }
+}
+
+/* ——— Счётчики ——— */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--ytf-white);
+  overflow: hidden;
+}
+@media (max-width: 1000px) {
+  .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: clamp(24px, 3vw, 40px);
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  margin: 0 -1px -1px 0; /* схлопываем внешние линии сетки */
+}
+.stat__value {
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 1.8rem + 3vw, 4.75rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: var(--tracking-display);
+  font-variant-numeric: tabular-nums;
+  color: var(--ytf-blue);
+}
+.stat__label { max-width: 18ch; color: var(--text-muted); line-height: 1.35; }
+
+/* ——— Карточки программ ——— */
+
+.program-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: clamp(24px, 2.6vw, 36px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--ytf-white);
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+.program-card:hover { transform: translateY(-4px); border-color: var(--blue-soft); box-shadow: var(--shadow-soft); }
+.program-card__index {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 8px;
+  border-radius: 12px;
+  background: var(--blue-soft);
+  color: var(--ytf-blue);
+  font-family: var(--font-display);
+  font-size: var(--fs-small);
+  font-weight: 700;
+}
+.program-card__title { font-size: var(--fs-h3); }
+.program-card__badge {
+  align-self: flex-start;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--ytf-black);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+}
+.program-card__text { color: var(--text-muted); }
+.program-card .arrow-link { margin-top: auto; padding-top: 12px; }
+
+/* ——— Истории выпускников ——— */
+
+.story-card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: clamp(24px, 2.6vw, 32px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--ytf-white);
+}
+.story-card__person { display: flex; align-items: center; gap: 14px; }
+.avatar {
+  width: 56px;
+  height: 56px;
+  flex: none;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.avatar--initials {
+  display: grid;
+  place-items: center;
+  background: var(--blue-soft);
+  color: var(--ytf-blue);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+.story-card__name { font-size: 1.125rem; letter-spacing: -0.015em; }
+.story-card__meta { font-size: var(--fs-xs); font-weight: 700; color: var(--ytf-blue); }
+.story-card__quote {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-style: italic;
+  line-height: 1.4;
+}
+.story-card__work { margin-top: auto; font-size: var(--fs-small); color: var(--text-muted); }
+
+/* ——— Новости ——— */
+
+.news-card { position: relative; display: flex; flex-direction: column; gap: 16px; }
+.play-badge {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 0.92);
+  color: var(--ytf-blue);
+  transform: translate(-50%, -50%);
+  box-shadow: var(--shadow-soft);
+}
+.news-card__media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--surface) url('../assets/brand/logo-mark-blue.svg') center / 36% no-repeat;
+}
+.news-card__media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease); }
+.news-card:hover .news-card__media img { transform: scale(1.03); }
+.news-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+}
+.news-card__tag {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--blue-soft);
+  font-weight: 700;
+  color: var(--ytf-blue);
+}
+.news-card__title { font-size: var(--fs-h3); line-height: 1.25; }
+.news-card__link { color: inherit; text-decoration: none; }
+.news-card__link::after { content: ''; position: absolute; inset: 0; }
+.news-card:hover .news-card__link { color: var(--ytf-blue); }
+.news-card__text { color: var(--text-muted); }
+.news-card__person { font-size: var(--fs-small); font-weight: 700; color: var(--ytf-blue); }
+
+/* ——— Видео: обложка с ▶, кнопка «Смотреть видео», всплывающий плеер ——— */
+
+.video-cover {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  background: var(--ytf-black);
+  cursor: pointer;
+}
+.video-cover img { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; transition: transform 0.6s var(--ease), opacity 0.3s var(--ease); }
+.video-cover:hover img { transform: scale(1.03); opacity: 1; }
+.video-cover:hover .play-badge { background: var(--ytf-blue); color: var(--ytf-white); }
+.play-badge { transition: background-color 0.2s var(--ease), color 0.2s var(--ease); }
+
+.watch-btn {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 8px;
+  padding: 6px 14px 6px 6px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--ytf-white);
+  color: var(--ytf-black);
+  font: inherit;
+  font-size: var(--fs-small);
+  font-weight: 700;
+  cursor: pointer;
+}
+.watch-btn:hover { border-color: var(--ytf-blue); color: var(--ytf-blue); }
+.watch-btn__icon {
+  display: inline-grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--ytf-blue);
+  color: var(--ytf-white);
+  font-size: 10px;
+}
+
+.video-modal {
+  width: min(1100px, calc(100vw - 32px));
+  max-width: none;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  overflow: visible;
+}
+.video-modal::backdrop { background: rgb(10 12 20 / 0.82); backdrop-filter: blur(4px); }
+.video-modal__box { position: relative; }
+.video-modal__player { position: relative; aspect-ratio: 16 / 9; overflow: hidden; border-radius: var(--radius); background: var(--ytf-black); }
+.video-modal__player .video__el { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.video-modal__title { margin-top: 12px; color: var(--ytf-white); font-weight: 700; }
+.video-modal__close {
+  position: absolute;
+  top: -48px;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 0.15);
+  color: var(--ytf-white);
+  font-size: 1rem;
+  cursor: pointer;
+}
+.video-modal__close:hover { background: rgb(255 255 255 / 0.3); }
+
+.press-card__play { padding: 0; border: 0; background: none; font: inherit; text-align: left; cursor: pointer; }
+
+/* ——— Доска почёта ——— */
+
+.honor-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--ytf-white);
+}
+.honor-card__media {
+  aspect-ratio: 16 / 10;
+  background: var(--surface) url('../assets/brand/logo-mark-blue.svg') center / 34% no-repeat;
+}
+.honor-card__media img { width: 100%; height: 100%; object-fit: cover; }
+.honor-card__body { display: flex; flex: 1; flex-direction: column; gap: 10px; padding: 22px 24px 24px; }
+.honor-card__title { font-size: 1.25rem; line-height: 1.25; }
+.honor-card__person { font-size: var(--fs-small); font-weight: 700; color: var(--ytf-blue); }
+.honor-card__text { color: var(--text-muted); font-size: 0.9375rem; }
+.honor-card__link { margin-top: auto; padding-top: 6px; }
+
+/* ——— Карта Казахстана (страница выпускников) ——— */
+
+.kz-map__canvas { position: relative; }
+.kz-map__svg { width: 100%; height: auto; overflow: visible; }
+
+.kz-map__status {
+  display: grid;
+  place-items: center;
+  min-height: 320px;
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  color: var(--text-muted);
+}
+
+.kz-map__region {
+  fill: color-mix(in srgb, var(--map-high) var(--heat, 0%), var(--map-low));
+  stroke: var(--map-stroke);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+  cursor: pointer;
+  transition: fill 0.6s var(--ease), opacity 0.2s var(--ease);
+}
+.kz-map__region.is-empty { fill: var(--map-empty); }
+.kz-map__region:hover,
+.kz-map__region:focus-visible { opacity: 0.82; outline: none; }
+.kz-map__region.is-selected { stroke: var(--map-route); stroke-width: 2.5; }
+
+.kz-map__city { cursor: pointer; }
+.kz-map__city:focus-visible { outline: none; }
+.kz-map__city:focus-visible circle:last-of-type { stroke: var(--ytf-black); stroke-width: 3; }
+.kz-map__city-dot {
+  fill: color-mix(in srgb, var(--map-high) var(--heat, 0%), var(--map-low));
+  stroke: var(--ytf-white);
+  stroke-width: 2.5;
+}
+.kz-map__city.is-empty .kz-map__city-dot { fill: var(--map-empty); stroke: var(--text-muted); stroke-width: 1.5; }
+.kz-map__city-label {
+  font-family: var(--font-text);
+  font-size: 15px;
+  font-weight: 700;
+  fill: var(--ytf-black);
+  paint-order: stroke;
+  stroke: rgb(255 255 255 / 0.9);
+  stroke-width: 4px;
+  pointer-events: none;
+}
+
+.kz-map__hub-dot { fill: var(--map-hub); stroke: var(--ytf-white); stroke-width: 3; }
+.kz-map__pulse {
+  fill: var(--map-hub);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: kz-pulse 2.4s var(--ease) infinite;
+  pointer-events: none;
+}
+.kz-map__pulse--late { animation-delay: 1.2s; }
+@keyframes kz-pulse {
+  from { transform: scale(1); opacity: 0.45; }
+  to { transform: scale(3.4); opacity: 0; }
+}
+
+.kz-map__route-layer { opacity: 0; pointer-events: none; }
+.kz-map__route-layer.is-visible { opacity: 1; }
+.kz-map__route {
+  fill: none;
+  stroke: var(--map-route);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-dasharray: 8 8;
+  animation: kz-route-dash 0.8s linear infinite;
+}
+@keyframes kz-route-dash {
+  to { stroke-dashoffset: -16; }
+}
+.kz-map__route-start {
+  fill: var(--ytf-white);
+  stroke: var(--map-route);
+  stroke-width: 3;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.is-visible .kz-map__route-start { animation: kz-pop 0.4s var(--ease); }
+@keyframes kz-pop {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
+}
+
+.kz-map__tooltip {
+  position: absolute;
+  z-index: 2;
+  display: grid;
+  gap: 2px;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  background: var(--ytf-black);
+  color: var(--ytf-white);
+  font-size: var(--fs-small);
+  white-space: nowrap;
+  transform: translate(-50%, calc(-100% - 14px));
+  pointer-events: none;
+}
+.kz-map__tooltip[hidden] { display: none; }
+.kz-map__tooltip.is-below { transform: translate(-50%, 18px); }
+.kz-map__tooltip strong { font-family: var(--font-display); font-size: 1rem; }
+.kz-map__tooltip span { color: rgb(255 255 255 / 0.7); }
+
+.kz-map__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+}
+.kz-map__legend { display: flex; align-items: center; gap: 12px; }
+.kz-map__legend-bar {
+  width: 160px;
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--map-low), var(--map-high));
+}
+.kz-map__total { font-weight: 700; color: var(--ytf-black); }
+
+@media (max-width: 600px) {
+  .kz-map__city-label { font-size: 22px; stroke-width: 5px; }
+}

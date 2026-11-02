@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="programsPage.metaTitle">Программы — Фонд имени Ержана Татишева</title>
+  <meta name="description" content="Программы Фонда имени Ержана Татишева: БесТірек (грант до 90% в AlmaU), «Получи ремесло!» (любой колледж Казахстана), стипендии Кентау.">
+  <meta name="theme-color" content="#465ED5">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/inner.css">
+  <script type="module" src="js/pages/programs.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="common.skip">Перейти к содержимому</a>
+  <header class="site-header" id="site-header"></header>
+
+  <main id="main">
+    <section class="page-hero" data-photo="programs">
+      <div class="container">
+        <p class="eyebrow" data-i18n="programsPage.eyebrow">Программы</p>
+        <h1 class="page-hero__title" data-i18n-html="programsPage.title">Три траектории <em>роста</em></h1>
+        <p class="page-hero__lead" data-i18n="programsPage.lead"></p>
+        <nav class="program-nav" id="program-nav" aria-label="Программы"></nav>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container" id="program-list"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+</body>
+</html>

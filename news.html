@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="newsPage.metaTitle">Новости — Фонд имени Ержана Татишева</title>
+  <meta name="description" content="Новости Фонда имени Ержана Татишева: события, программы, истории стипендиатов.">
+  <meta name="theme-color" content="#465ED5">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/inner.css">
+  <script type="module" src="js/pages/feed.js"></script>
+</head>
+<body data-feed="news">
+  <a class="skip-link" href="#main" data-i18n="common.skip">Перейти к содержимому</a>
+  <header class="site-header" id="site-header"></header>
+
+  <main id="main">
+    <!-- Лента новостей -->
+    <div id="feed">
+      <section class="page-hero">
+        <div class="container">
+          <p class="eyebrow" data-i18n="newsPage.eyebrow">Новости</p>
+          <h1 class="page-hero__title" data-i18n-html="newsPage.title">Новости <em>фонда</em></h1>
+          <p class="page-hero__lead" data-i18n="newsPage.lead"></p>
+        </div>
+      </section>
+      <section class="section">
+        <div class="container">
+          <div class="chips" id="feed-tags" role="group" aria-label="Теги"></div>
+          <div class="grid-3" id="feed-list" aria-live="polite"></div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Отдельная новость: news.html#<id> -->
+    <section class="section" id="feed-article" hidden>
+      <div class="container"><article class="article" id="article"></article></div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+</body>
+</html>

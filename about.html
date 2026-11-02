@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="about.metaTitle">О фонде — Фонд имени Ержана Татишева</title>
+  <meta name="description" content="История, миссия, ценности, органы управления, публикации и годовые отчёты Фонда имени Ержана Татишева.">
+  <meta name="theme-color" content="#465ED5">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/inner.css">
+  <script type="module" src="js/pages/about.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="common.skip">Перейти к содержимому</a>
+  <header class="site-header" id="site-header"></header>
+
+  <main id="main">
+    <section class="page-hero" data-photo="about">
+      <div class="container">
+        <p class="eyebrow" data-i18n="about.eyebrow">О фонде</p>
+        <h1 class="page-hero__title" data-i18n-html="about.title">Инвестиции <em>в интеллект</em></h1>
+        <p class="page-hero__lead" data-i18n="about.lead">Катализатор развития человеческого капитала Казахстана.</p>
+      </div>
+    </section>
+
+    <!-- История, миссия, видение -->
+    <section class="section">
+      <div class="container">
+        <div class="split">
+          <header>
+            <p class="eyebrow" data-i18n="about.historyEyebrow">История</p>
+            <h2 class="section__title" data-i18n-html="about.historyTitle">Платформа для <em>молодых талантов</em></h2>
+          </header>
+          <div class="prose">
+            <p data-i18n="about.history1"></p>
+            <p data-i18n="about.history2"></p>
+          </div>
+        </div>
+        <div class="mv-grid">
+          <article class="mv-card mv-card--blue">
+            <p class="mv-card__label" data-i18n="about.missionLabel">Миссия</p>
+            <h3 class="mv-card__title" data-i18n="about.mission"></h3>
+            <p class="mv-card__text" data-i18n="about.missionText"></p>
+          </article>
+          <article class="mv-card">
+            <p class="mv-card__label" data-i18n="about.visionLabel">Видение</p>
+            <h3 class="mv-card__title" data-i18n="about.vision"></h3>
+            <p class="mv-card__text" data-i18n="about.visionText"></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ержан Татишев (заполняется в админке: «История фонда»; скрыт, пока пусто) -->
+    <section class="section section--tint" id="founder" hidden>
+      <div class="container founder" id="founder-body"></div>
+    </section>
+
+    <!-- Проекты фонда (скрыт, пока пусто) -->
+    <section class="section" id="projects" hidden>
+      <div class="container">
+        <header class="section__head">
+          <p class="eyebrow" data-i18n="about.founderEyebrow">История фонда</p>
+          <h2 class="section__title" data-i18n-html="about.projectsTitle">Проекты <em>фонда</em></h2>
+        </header>
+        <div class="grid-3" id="projects-list"></div>
+      </div>
+    </section>
+
+    <!-- Таймлайн -->
+    <section class="section section--tint">
+      <div class="container split">
+        <header>
+          <p class="eyebrow" data-i18n="about.timelineEyebrow">Хронология</p>
+          <h2 class="section__title" data-i18n-html="about.timelineTitle">Путь фонда <em>2005–2026</em></h2>
+        </header>
+        <ol class="timeline" id="timeline"></ol>
+      </div>
+    </section>
+
+    <!-- Ценности -->
+    <section class="section">
+      <div class="container">
+        <header class="section__head">
+          <p class="eyebrow" data-i18n="about.valuesEyebrow">Ценности</p>
+          <h2 class="section__title" data-i18n-html="about.valuesTitle">Во что мы <em>верим</em></h2>
+        </header>
+        <div class="grid-4">
+          <article class="value-card"><span class="value-card__num">01</span><h3 class="value-card__title" data-i18n="about.values.fairness.title"></h3><p class="value-card__text" data-i18n="about.values.fairness.text"></p></article>
+          <article class="value-card"><span class="value-card__num">02</span><h3 class="value-card__title" data-i18n="about.values.quality.title"></h3><p class="value-card__text" data-i18n="about.values.quality.text"></p></article>
+          <article class="value-card"><span class="value-card__num">03</span><h3 class="value-card__title" data-i18n="about.values.responsibility.title"></h3><p class="value-card__text" data-i18n="about.values.responsibility.text"></p></article>
+          <article class="value-card"><span class="value-card__num">04</span><h3 class="value-card__title" data-i18n="about.values.practices.title"></h3><p class="value-card__text" data-i18n="about.values.practices.text"></p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Органы управления -->
+    <section class="section section--tint" id="governance">
+      <div class="container">
+        <header class="section__head">
+          <p class="eyebrow" data-i18n="about.peopleEyebrow">Управление</p>
+          <h2 class="section__title" data-i18n-html="about.governanceTitle">Органы <em>управления</em></h2>
+        </header>
+        <div class="people-block" id="president-block" hidden>
+          <h3 class="people-block__title" data-i18n="about.presidentTitle">Президент фонда</h3>
+          <div id="president"></div>
+        </div>
+        <div class="people-block">
+          <h3 class="people-block__title" data-i18n="about.boardTitle">Попечительский совет</h3>
+          <div class="grid-4" id="board"></div>
+        </div>
+        <div class="people-block" id="team-block">
+          <h3 class="people-block__title" data-i18n="about.teamTitle">Команда</h3>
+          <div class="grid-4" id="team"></div>
+        </div>
+        <div class="people-block" id="docs-block" hidden>
+          <h3 class="people-block__title" data-i18n="about.docsTitle">Документы</h3>
+          <div class="report-list" id="docs"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- О нас пишут (скрыт, пока пусто) -->
+    <section class="section" id="press" hidden>
+      <div class="container">
+        <header class="section__head">
+          <p class="eyebrow" data-i18n="about.pressEyebrow">О нас пишут</p>
+          <h2 class="section__title" data-i18n-html="about.pressTitle">О нас <em>пишут</em></h2>
+        </header>
+        <div class="grid-3" id="press-list"></div>
+      </div>
+    </section>
+
+    <!-- Годовые отчёты -->
+    <section class="section section--tint" id="reports">
+      <div class="container split">
+        <header>
+          <p class="eyebrow" data-i18n="about.reportsEyebrow">Прозрачность</p>
+          <h2 class="section__title" data-i18n-html="about.reportsTitle">Годовые <em>отчёты</em></h2>
+        </header>
+        <div class="report-list" id="reports-list" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+</body>
+</html>

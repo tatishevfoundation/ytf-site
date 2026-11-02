@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="contacts.metaTitle">Контакты — Фонд имени Ержана Татишева</title>
+  <meta name="description" content="Контакты Фонда имени Ержана Татишева: г. Алматы, ул. Байзакова 125, оф. 508, +7 (700) 331 13 14, info@ytf.kz.">
+  <meta name="theme-color" content="#465ED5">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/inner.css">
+  <script type="module" src="js/pages/contacts.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="common.skip">Перейти к содержимому</a>
+  <header class="site-header" id="site-header"></header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow" data-i18n="contacts.eyebrow">Контакты</p>
+        <h1 class="page-hero__title" data-i18n-html="contacts.title">Свяжитесь <em>с нами</em></h1>
+        <p class="page-hero__lead" data-i18n="contacts.lead"></p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container contact-grid">
+        <div class="contact-list" id="contact-list"></div>
+
+        <div class="form-card">
+          <h2 class="form-card__title" data-i18n="contacts.formTitle">Напишите нам</h2>
+          <form class="form" id="contact-form" novalidate>
+            <div class="form__row">
+              <label class="field">
+                <span class="field__label" data-i18n="contacts.form.name">Имя</span>
+                <input class="input" name="name" autocomplete="name" required maxlength="120">
+              </label>
+              <label class="field">
+                <span class="field__label" data-i18n="contacts.form.contact">Email или телефон</span>
+                <input class="input" name="contact" autocomplete="email" required maxlength="160">
+              </label>
+            </div>
+            <label class="field">
+              <span class="field__label" data-i18n="contacts.form.message">Сообщение</span>
+              <textarea class="textarea" name="message" required maxlength="4000"></textarea>
+            </label>
+            <!-- ловушка для ботов: люди это поле не видят -->
+            <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <p class="form__privacy" data-i18n="contacts.form.privacy"></p>
+            <div><button class="btn btn--primary btn--lg" type="submit" data-i18n="contacts.form.submit">Отправить</button></div>
+            <p class="form__status" id="form-status" role="status" hidden></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tint">
+      <div class="container">
+        <header class="section__head">
+          <h2 class="section__title" data-i18n-html="contacts.mapTitle">Как нас <em>найти</em></h2>
+        </header>
+        <iframe class="map-embed" id="map-embed" title="Карта: г. Алматы, ул. Байзакова 125" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <header class="section__head">
+          <p class="eyebrow" data-i18n="contacts.faqEyebrow">FAQ</p>
+          <h2 class="section__title" data-i18n-html="contacts.faqTitle">Частые <em>вопросы</em></h2>
+        </header>
+        <div class="faq" id="faq-list"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+</body>
+</html>

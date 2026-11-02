@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title data-i18n="notFound.metaTitle">Страница не найдена — Фонд имени Ержана Татишева</title>
+  <meta name="theme-color" content="#465ED5">
+  <!-- Абсолютные пути: хостинг отдаёт эту страницу на любом несуществующем адресе, в том числе вложенном -->
+  <link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/pages/inner.css">
+  <script type="module">
+    import { initPage } from '/js/core/page.js';
+    initPage();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="common.skip">Перейти к содержимому</a>
+  <header class="site-header" id="site-header"></header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow">404</p>
+        <h1 class="page-hero__title" data-i18n-html="notFound.title">Страница <em>не найдена</em></h1>
+        <p class="page-hero__lead" data-i18n="notFound.lead">Возможно, ссылка устарела или в адресе опечатка.</p>
+        <p><a class="btn btn--primary btn--lg" href="/" data-i18n="notFound.button">На главную</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="graduatesPage.metaTitle">Выпускники — Фонд имени Ержана Татишева</title>
+  <meta name="description" content="Выпускники Фонда имени Ержана Татишева: программы, годы выпуска, регионы Казахстана.">
+  <meta name="theme-color" content="#465ED5">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/inner.css">
+  <script type="module" src="js/pages/people.js"></script>
+</head>
+<body data-people="graduate">
+  <a class="skip-link" href="#main" data-i18n="common.skip">Перейти к содержимому</a>
+  <header class="site-header" id="site-header"></header>
+
+  <main id="main">
+    <section class="page-hero" data-photo="graduates">
+      <div class="container">
+        <p class="eyebrow" data-i18n="graduatesPage.eyebrow">Выпускники</p>
+        <h1 class="page-hero__title" data-i18n-html="graduatesPage.title">Наши <em>выпускники</em></h1>
+        <p class="page-hero__lead" data-i18n="graduatesPage.lead"></p>      </div>
+    </section>
+
+    <!-- Список с поиском и фильтрами -->
+    <section class="section section--tint" id="list">
+      <div class="container">
+        <header class="section__head">
+          <h2 class="section__title" data-i18n-html="graduatesPage.listTitle">Все <em>выпускники</em></h2>
+        </header>
+        <div class="filters">
+          <label class="field field--search">
+            <span class="field__label" data-i18n="filters.search">Поиск по имени</span>
+            <input class="input" type="search" id="f-search" autocomplete="off"
+              data-i18n-attr="placeholder:filters.searchPlaceholder" placeholder="Введите имя или фамилию">
+          </label>
+          <label class="field">
+            <span class="field__label" data-i18n="filters.program">Программа</span>
+            <select class="select" id="f-program"></select>
+          </label>
+          <label class="field">
+            <span class="field__label" data-i18n="filters.year">Год выпуска</span>
+            <select class="select" id="f-year"></select>
+          </label>
+          <label class="field">
+            <span class="field__label" data-i18n="filters.region">Регион</span>
+            <select class="select" id="f-region"></select>
+          </label>
+          <button type="button" class="btn btn--outline" id="f-reset" data-i18n="filters.reset">Сбросить</button>
+          <p class="filters__count" id="f-count" aria-live="polite"></p>
+        </div>
+        <div class="grid-3" id="people-list"></div>
+      </div>
+    </section>
+
+    <!-- Карта регионов -->
+    <section class="section">
+      <div class="container">
+        <header class="section__head">
+          <p class="eyebrow" data-i18n="graduatesPage.mapEyebrow">География</p>
+          <h2 class="section__title" data-i18n-html="graduatesPage.mapTitle">Выпускники <em>по регионам</em></h2>
+          <p class="section__lead" data-i18n="graduatesPage.mapLead"></p>
+        </header>
+        <div class="map-card"><div id="kz-map"></div></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+</body>
+</html>

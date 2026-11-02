@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="home.meta.title">Фонд имени Ержана Татишева — гранты на образование в Казахстане</title>
+  <meta name="description" data-i18n-attr="content:home.meta.description"
+    content="Фонд имени Ержана Татишева с 2005 года поддерживает талантливую молодёжь Казахстана: гранты на обучение в AlmaU, обучение ремеслу в колледжах, стипендии.">
+  <meta name="theme-color" content="#465ED5">
+  <meta property="og:title" content="Фонд имени Ержана Татишева">
+  <meta property="og:url" content="https://ytf.kz/">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://firestore.googleapis.com">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/home.css">
+  <script type="importmap">
+    { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.min.js" } }
+  </script>
+  <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.min.js" crossorigin>
+  <script type="module" src="js/pages/home.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="common.skip">Перейти к содержимому</a>
+  <header class="site-header" id="site-header"></header>
+
+  <main id="main">
+    <!-- Первый экран: 3D-история стипендиата, привязанная к прокрутке.
+         --story-scroll — длина участка прокрутки, на который растянута история (js/components/hero-story.js). -->
+    <section class="story" id="story" style="--story-scroll: 240vh">
+      <div class="story__sticky">
+        <div class="container story__grid">
+          <div class="story__text">
+            <p class="eyebrow" data-i18n="home.hero.eyebrow">Фонд имени Ержана Татишева · с 2005 года</p>
+            <h1 class="story__title" data-i18n-html="home.hero.title">Инвестируем в людей. <em>Меняем будущее.</em></h1>
+            <p class="story__lead" data-i18n="home.hero.lead">Помогаем молодым людям получить образование, раскрыть свой потенциал и внести вклад в развитие Казахстана.</p>
+            <div class="story__actions">
+              <!-- надпись — из админки («Главная кнопка и фото страниц»), см. home.js -->
+              <a class="btn btn--primary btn--lg" id="hero-cta" href="programs.html">Подать заявку</a>
+            </div>
+            <p class="story__hint" aria-hidden="true" data-i18n="home.hero.hint">Прокрутите, чтобы увидеть путь стипендиата</p>
+          </div>
+
+          <div class="story__stage">
+            <canvas class="story__canvas" role="img" data-i18n-attr="aria-label:home.hero.sceneLabel"
+              aria-label="Анимация: стипендиат получает грант фонда, учится в университете, выпускается и начинает карьеру"></canvas>
+            <img class="story__fallback" src="assets/img/story-fallback.jpg" alt="" width="840" height="730" loading="lazy"
+              data-i18n-attr="alt:home.hero.sceneLabel">
+            <ol class="story__chapters" aria-hidden="true">
+              <li data-chapter="grant" class="is-active" data-i18n="home.hero.chapters.grant">Грант</li>
+              <li data-chapter="study" data-i18n="home.hero.chapters.study">Учёба</li>
+              <li data-chapter="graduation" data-i18n="home.hero.chapters.graduation">Выпуск</li>
+              <li data-chapter="career" data-i18n="home.hero.chapters.career">Карьера</li>
+            </ol>
+            <span class="story__track" aria-hidden="true"><span class="story__bar"></span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Бегущая строка со статистикой -->
+    <section class="ticker" id="stats-ticker" data-i18n-attr="aria-label:home.ticker.label" aria-label="Фонд в цифрах"></section>
+
+    <!-- Программы -->
+    <section class="section section--tint" id="programs">
+      <div class="container">
+        <header class="section__head">
+          <p class="eyebrow" data-i18n="home.programs.eyebrow">Программы</p>
+          <h2 class="section__title" data-i18n-html="home.programs.title">Три траектории <em>роста</em></h2>
+        </header>
+        <ol class="grid-3 program-list" id="home-programs">
+          <li class="program-card">
+            <span class="program-card__index">01</span>
+            <h3 class="program-card__title" data-i18n="programs.bestirek">БесТірек</h3>
+            <p class="program-card__badge" data-i18n="home.programs.bestirekBadge">до 90% стоимости</p>
+            <p class="program-card__text" data-i18n="home.programs.bestirek">Грант на обучение в AlmaU с покрытием до 90% стоимости.</p>
+            <a class="arrow-link" href="programs.html#bestirek" data-i18n="common.more">Подробнее</a>
+          </li>
+          <li class="program-card">
+            <span class="program-card__index">02</span>
+            <h3 class="program-card__title" data-i18n="programs.craft">Получи ремесло!</h3>
+            <p class="program-card__badge" data-i18n="home.programs.craftBadge">любой колледж РК</p>
+            <p class="program-card__text" data-i18n="home.programs.craft">Поддержка обучения рабочей профессии в любом колледже Казахстана.</p>
+            <a class="arrow-link" href="programs.html#craft" data-i18n="common.more">Подробнее</a>
+          </li>
+          <li class="program-card">
+            <span class="program-card__index">03</span>
+            <h3 class="program-card__title" data-i18n="programs.kentau">Стипендии Кентау</h3>
+            <p class="program-card__badge" data-i18n="home.programs.kentauBadge">школа №16</p>
+            <p class="program-card__text" data-i18n="home.programs.kentau">Стипендии для учеников школы №16 города Кентау.</p>
+            <a class="arrow-link" href="programs.html#kentau" data-i18n="common.more">Подробнее</a>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Цифры: инфографика — круги на синей панели со сферой (брендбук, с. 24) -->
+    <section class="section" id="impact">
+      <div class="container">
+        <div class="impact on-blue">
+          <div class="impact__intro">
+            <p class="eyebrow" data-i18n="home.impact.eyebrow">Результаты</p>
+            <h2 class="impact__title" id="impact-title">Фонд за <em>21 год</em></h2>
+            <p class="impact__lead" data-i18n="home.impact.lead">С 2005 года фонд поддерживает талантливую молодёжь из всех регионов Казахстана.</p>
+          </div>
+          <div class="impact__orbit">
+            <!-- круги и линии перерисовывает home.js: от 1 до 7 кругов из админки («Цифры на главной») -->
+            <svg class="impact__lines" id="impact-lines" viewBox="0 0 100 75" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M32 30 L74 22 M32 30 L70 56 M70 56 L24 64 M32 30 L24 64" />
+            </svg>
+            <ul class="bubbles" id="bubbles"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Лица фонда (graduates, featured = true) -->
+    <section class="section section--tint" id="stories">
+      <div class="container">
+        <header class="section__head section__head--row">
+          <div>
+            <p class="eyebrow" data-i18n="home.stories.eyebrow">Истории</p>
+            <h2 class="section__title" data-i18n-html="home.stories.title">Лица <em>фонда</em></h2>
+          </div>
+          <a class="arrow-link" href="graduates.html" data-i18n="home.stories.all">Все выпускники</a>
+        </header>
+        <div class="grid-3" id="stories-list" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- Достижения: три последних записи (скрыто, пока записей нет) -->
+    <section class="section" id="honors" hidden>
+      <div class="container">
+        <header class="section__head section__head--row">
+          <div>
+            <p class="eyebrow" data-i18n="home.honors.eyebrow">Достижения</p>
+            <h2 class="section__title" data-i18n-html="home.honors.title">Наши <em>достижения</em></h2>
+          </div>
+          <a class="arrow-link" href="achievements.html" data-i18n="home.honors.all">Все достижения</a>
+        </header>
+        <div class="grid-3" id="honors-list"></div>
+      </div>
+    </section>
+
+    <!-- Новости -->
+    <section class="section" id="news">
+      <div class="container">
+        <header class="section__head section__head--row">
+          <div>
+            <p class="eyebrow" data-i18n="home.news.eyebrow">Новости</p>
+            <h2 class="section__title" data-i18n-html="home.news.title">Новости <em>фонда</em></h2>
+          </div>
+          <a class="arrow-link" href="news.html" data-i18n="common.allNews">Все новости</a>
+        </header>
+        <div class="grid-3" id="news-list" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- Партнёры -->
+    <section class="section partners-section" id="partners">
+      <div class="container">
+        <header class="section__head section__head--row">
+          <div>
+            <p class="eyebrow" data-i18n="home.partners.eyebrow">Партнёры</p>
+            <h2 class="section__title" data-i18n-html="home.partners.title">Партнёры <em>фонда</em></h2>
+          </div>
+          <a class="arrow-link" href="partners.html" data-i18n="home.partners.all">Все партнёры</a>
+        </header>
+        <ul class="partners" id="partners-list"></ul>
+      </div>
+    </section>
+
+    <!-- CTA: синий фон + рукописный паттерн с кадрированием (брендбук, с. 24) -->
+    <section class="cta">
+      <div class="container">
+        <div class="cta__panel on-blue">
+          <img class="cta__signature" src="assets/brand/logo-mark-white.svg" alt="" aria-hidden="true">
+          <div class="cta__inner">
+            <h2 class="cta__title" data-i18n-html="home.cta.title">Мы ищем тех, кто <em>готов действовать</em></h2>
+            <p class="cta__lead" data-i18n="home.cta.lead">Выберите программу, изучите требования и заполните заявку. Это займёт около 15 минут.</p>
+            <div class="cta__actions">
+              <a class="btn btn--light btn--lg" href="programs.html" data-i18n="home.cta.button">Выбрать программу</a>
+              <a class="btn btn--outline-light btn--lg" href="contacts.html" data-i18n="home.cta.contact">Задать вопрос</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+</body>
+</html>

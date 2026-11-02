@@ -1,0 +1,272 @@
+/* Базовые токены, сброс, типографика, кнопки.
+   Палитра и шрифты — по брендбуку YTF (2025): синий #465ED5, чёрный #101010, белый;
+   Helvetica Neue Bold для заголовков, Arial для текста. */
+
+:root {
+  /* Палитра бренда */
+  --ytf-blue: #465ed5;
+  --ytf-black: #101010;
+  --ytf-white: #ffffff;
+
+  /* Производные тона (только оттенки трёх фирменных цветов) */
+  --blue-hover: color-mix(in srgb, var(--ytf-blue) 84%, var(--ytf-black));
+  --blue-tint: color-mix(in srgb, var(--ytf-blue) 5%, var(--ytf-white));
+  --blue-soft: color-mix(in srgb, var(--ytf-blue) 12%, var(--ytf-white));
+  --surface: color-mix(in srgb, var(--ytf-blue) 4%, var(--ytf-white));
+  --text: var(--ytf-black);
+  --text-muted: color-mix(in srgb, var(--ytf-black) 60%, var(--ytf-white));
+  --line: color-mix(in srgb, var(--ytf-black) 9%, var(--ytf-white));
+  --line-strong: color-mix(in srgb, var(--ytf-black) 18%, var(--ytf-white));
+
+  /* Карта (компонент используется на странице выпускников) */
+  --map-low: color-mix(in srgb, var(--ytf-blue) 14%, var(--ytf-white));
+  --map-high: var(--ytf-blue);
+  --map-empty: #f2f3f6;
+  --map-stroke: var(--ytf-white);
+  --map-route: var(--ytf-black);
+  --map-hub: var(--ytf-black);
+
+  /* Шрифты */
+  --font-display: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-text: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+
+  /* Типографическая шкала */
+  --fs-display: clamp(2.5rem, 1.5rem + 3.6vw, 4.75rem);
+  --fs-h2: clamp(2rem, 1.45rem + 2vw, 3.25rem);
+  --fs-h3: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
+  --fs-lead: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-xs: 0.8125rem;
+  --tracking-display: -0.04em;
+  --tracking-heading: -0.025em;
+  --lh-tight: 1.04;
+  --lh-heading: 1.15;
+  --lh-text: 1.55;
+
+  /* Сетка и ритм */
+  --gutter: clamp(16px, 2vw, 32px);
+  --margin: clamp(20px, 5vw, 80px);
+  --container: 1440px;
+  --section-space: clamp(80px, 9vw, 136px);
+
+  /* Формы */
+  --radius-sm: 10px;
+  --radius: 18px;
+  --radius-lg: 28px;
+  --shadow-soft: 0 1px 2px rgb(16 16 16 / 0.04), 0 10px 30px -12px rgb(16 16 16 / 0.12);
+
+  --header-h: 72px;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --focus: var(--ytf-blue);
+}
+
+@media (max-width: 960px) {
+  :root { --header-h: 64px; }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+/* атрибут hidden всегда скрывает, даже если у класса задан display */
+[hidden] { display: none !important; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 16px);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-text);
+  font-size: var(--fs-body);
+  line-height: var(--lh-text);
+  color: var(--text);
+  background: var(--ytf-white);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body.no-scroll { overflow: hidden; }
+
+img, svg, canvas { display: block; max-width: 100%; }
+img { height: auto; }
+
+h1, h2, h3, h4 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: var(--lh-heading);
+  letter-spacing: var(--tracking-heading);
+  text-wrap: balance;
+}
+
+/* Курсивный акцент в заголовках — фирменный приём */
+h1 em, h2 em, h3 em {
+  font-style: italic;
+  color: var(--ytf-blue);
+}
+
+p { margin: 0; text-wrap: pretty; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+
+a { color: var(--ytf-blue); text-underline-offset: 0.2em; }
+a:hover { color: var(--blue-hover); }
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.on-blue {
+  --focus: var(--ytf-white);
+  background: var(--ytf-blue);
+  color: var(--ytf-white);
+}
+.on-blue h1 em, .on-blue h2 em, .on-blue h3 em { color: inherit; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ——— Утилиты ——— */
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--margin);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  z-index: 1000;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: var(--ytf-black);
+  color: var(--ytf-white);
+}
+.skip-link:focus { top: 12px; color: var(--ytf-white); }
+
+/* Метка раздела: небольшая «пилюля» с точкой */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--blue-soft);
+  color: var(--ytf-blue);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.eyebrow::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.on-blue .eyebrow { background: rgb(255 255 255 / 0.16); color: var(--ytf-white); }
+
+.sphere {
+  aspect-ratio: 1;
+  background: url('../assets/brand/sphere.svg') center / contain no-repeat;
+  pointer-events: none;
+}
+
+/* ——— Кнопки ——— */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 46px;
+  padding: 10px 22px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s var(--ease), color 0.2s var(--ease), border-color 0.2s var(--ease), transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+}
+.btn:active { transform: scale(0.98); }
+.btn--lg { min-height: 54px; padding: 14px 28px; font-size: 1rem; }
+
+/* стрелка у основных действий */
+.btn--primary::after,
+.btn--light::after {
+  content: '→';
+  transition: transform 0.25s var(--ease);
+}
+.btn--primary:hover::after,
+.btn--light:hover::after { transform: translateX(3px); }
+
+.btn--primary { background: var(--ytf-blue); color: var(--ytf-white); box-shadow: 0 8px 20px -10px rgb(70 94 213 / 0.7); }
+.btn--primary:hover { background: var(--blue-hover); color: var(--ytf-white); }
+
+.btn--dark { background: var(--ytf-black); color: var(--ytf-white); }
+.btn--dark:hover { background: var(--ytf-blue); color: var(--ytf-white); }
+
+.btn--outline { border-color: var(--line-strong); color: var(--ytf-black); background: var(--ytf-white); }
+.btn--outline:hover { border-color: var(--ytf-black); color: var(--ytf-black); }
+
+.btn--light { background: var(--ytf-white); color: var(--ytf-blue); }
+.btn--light:hover { background: var(--blue-tint); color: var(--blue-hover); }
+
+.btn--outline-light { border-color: rgb(255 255 255 / 0.45); color: var(--ytf-white); background: transparent; }
+.btn--outline-light:hover { border-color: var(--ytf-white); background: rgb(255 255 255 / 0.1); color: var(--ytf-white); }
+
+/* Ссылка со стрелкой */
+.arrow-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  color: var(--ytf-black);
+  text-decoration: none;
+}
+.arrow-link::after {
+  content: '→';
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--blue-soft);
+  color: var(--ytf-blue);
+  transition: transform 0.25s var(--ease), background-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+.arrow-link:hover { color: var(--ytf-blue); }
+.arrow-link:hover::after { transform: translateX(3px); background: var(--ytf-blue); color: var(--ytf-white); }
+
+.empty-state {
+  grid-column: 1 / -1;
+  padding: 28px;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius);
+  color: var(--text-muted);
+}
